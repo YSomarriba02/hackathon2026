@@ -1,6 +1,9 @@
-import type { Metadata } from "next";
-import { Geist, Plus_Jakarta_Sans } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
 import "./globals.css";
+import MainNavigation from "@/components/MainNavigation";
+import TabBar from "@/components/TabBar";
+import HeaderNav from "@/components/HeaderNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,11 +15,12 @@ export const metadata: Metadata = {
   description: "Plataforma móvil de subastas",
 };
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
+export const viewport: Viewport = {
+  themeColor: '#000000',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+};
 
 export default function RootLayout({
   children,
@@ -26,9 +30,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${jakarta.className} h-full antialiased`}
+      className={`h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col">{children}</body>
+      <body className={`${geistSans.className} min-h-screen flex flex-col`}>
+        <HeaderNav />
+        <main className="p-4 px-6">
+          {children}
+        </main>
+        <TabBar />
+      </body>
     </html>
   );
 }

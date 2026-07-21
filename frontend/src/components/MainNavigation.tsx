@@ -2,17 +2,23 @@
 
 import { useState } from "react"
 import BtnTab from "./BtnTab"
-import Tab from "./Tab"
+import Drawer from "./Drawer"
 
-export default function MainNavigation(){
+export default function MainNavigation() {
     const [activateTab, setActivateTab] = useState(false)
-    return(
-        <div>
-            <div className="p-2 w-full flex justify-between">
-            <span className="text-2xl">Portico</span>
-            <BtnTab></BtnTab>
-        </div>
-        <Tab></Tab>
+
+    function handleClick() {
+        setActivateTab(prev => !prev)
+    }
+    return (
+        <div className="sticky top-0 left-0 right-0 border-b-2 border-black mb-10 bg-slate-100">
+            <div className="p-3 w-full flex justify-between">
+                <span className="text-3xl font-medium">Portico</span>
+                <div className="flex gap-4">
+                    <BtnTab handleClick={handleClick}></BtnTab>
+                </div>
+            </div>
+            <Drawer activateTab={activateTab} handleClick={handleClick}></Drawer>
         </div>
     )
 }

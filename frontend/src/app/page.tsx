@@ -1,9 +1,12 @@
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1 className="text-2xl text-blue-200">Hackathon 2026</h1>
-      </main>
+    <div className="min-h-screen flex flex-col gap-6">
+      <section className="flex flex-col gap-10 ">
+        <div className="h-80 w-full rounded-2xl bg-slate-300"></div>
+        <div className="h-80 w-full rounded-2xl bg-slate-300"></div>
+        <div className="h-80 w-full rounded-2xl bg-slate-300"></div>
+        <div className="h-80 w-full rounded-2xl bg-slate-300"></div>
+      </section>
     </div>
   );
 }

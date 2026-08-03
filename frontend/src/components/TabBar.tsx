@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation"
 import Link from "next/link"
 
 const tabLinks = [
-  { name: "principal", icon: House, to: "/" },
-  { name: "publicarPost", icon: Plus, to: "/create" },
+  { name: "Inicio", icon: House, to: "/" },
+  { name: "publicar", icon: Plus, to: "/create" },
   { name: "Busqueda", icon: Search, to: "/search" },
   { name: "Perfil", icon: CircleUserRound, to: "/profile" }
 ]
@@ -15,15 +15,16 @@ export default function TabBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-background w-full fixed bottom-0 p-4 px-6 border-t-2 border-[#a3a3a3] pb-[env(safe-area-inset-bottom)]">
+    <nav className="[backdrop-filter:blur(5px)] bg-[#0c0c0cc1] w-full fixed bottom-0 p-3 px-6 pb-[env(safe-area-inset-bottom)]">
       <ul className="w-full flex gap-1 pb-2">
         {tabLinks.map((e, i) => {
           const isActive = pathname == e.to;
           return (
             <li key={i} className="w-full">
-              <Link href={e.to} className="w-full flex justify-center">
-                <e.icon size={isActive ? "27" : "25"} className={`${isActive ? ' text-foreground [stroke-3] scale-110 ' : '[stroke-2] scale-100 text-primary'
+              <Link href={e.to} className="w-full flex justify-center items-center flex-col gap-1">
+                <e.icon size={isActive ? "27" : "25"} className={`${isActive ? 'text-primary [stroke-3] scale-110 ' : '[stroke-2] scale-100 text-foreground'
                   }`}></e.icon>
+                  <span className={`text-[10px] ${isActive ? "text-primary" : "text-foreground"}`}>{e.name}</span>
               </Link>
             </li>
           )

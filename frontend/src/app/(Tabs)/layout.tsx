@@ -18,7 +18,7 @@ export default function TabsLayout({
   return (
     <>
       <HeaderNav />
-      <main className="h-full flex-1">
+      <main className="h-full flex-1 pb-14">
         <TabManager
           home={home}
           create={create}

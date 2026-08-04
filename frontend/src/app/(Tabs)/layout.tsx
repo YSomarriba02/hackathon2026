@@ -1,6 +1,6 @@
-import HeaderNav from "@/components/HeaderNav";
-import TabBar from "@/components/TabBar";
-import TabManager from "@/components/TabManager";
+import HeaderNav from "@/components/navigation/HeaderNav";
+import TabBar from "@/components/navigation/TabBar";
+import TabManager from "@/components/navigation/TabManager";
 
 export default function TabsLayout({
   children,
@@ -18,7 +18,7 @@ export default function TabsLayout({
   return (
     <>
       <HeaderNav />
-      <main className="h-full flex-1 pb-14">
+      <main className="h-full flex-1 pb-14 bg-background text-foreground">
         <TabManager
           home={home}
           create={create}

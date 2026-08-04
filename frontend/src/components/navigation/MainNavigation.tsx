@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import BtnTab from "./BtnTab"
 import Drawer from "./Drawer"
 
 export default function MainNavigation() {
@@ -15,7 +14,6 @@ export default function MainNavigation() {
             <div className="p-3 w-full flex justify-between">
                 <span className="text-3xl font-medium">Portico</span>
                 <div className="flex gap-4">
-                    <BtnTab handleClick={handleClick}></BtnTab>
                 </div>
             </div>
             <Drawer activateTab={activateTab} handleClick={handleClick}></Drawer>

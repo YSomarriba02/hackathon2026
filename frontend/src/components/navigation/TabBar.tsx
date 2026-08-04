@@ -22,9 +22,9 @@ export default function TabBar() {
           return (
             <li key={i} className="w-full">
               <Link href={e.to} className="w-full flex justify-center items-center flex-col gap-1">
-                <e.icon size={isActive ? "27" : "25"} className={`${isActive ? 'text-primary [stroke-3] scale-110 ' : '[stroke-2] scale-100 text-foreground'
+                <e.icon size={isActive ? "27" : "25"} className={`${isActive ? 'text-primary [stroke-3] scale-110 ' : '[stroke-2] scale-100 text-white'
                   }`}></e.icon>
-                  <span className={`text-[10px] ${isActive ? "text-primary" : "text-foreground"}`}>{e.name}</span>
+                <span className={`text-[10px] ${isActive ? "text-primary" : "text-foreground"}`}>{e.name}</span>
               </Link>
             </li>
           )

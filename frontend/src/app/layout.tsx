@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import TabBar from "@/components/TabBar";
-import HeaderNav from "@/components/HeaderNav";
-import TabManager from "@/components/TabManager";
+import TabBar from "@/components/navigation/TabBar";
+import HeaderNav from "@/components/navigation/HeaderNav";
+import TabManager from "@/components/navigation/TabManager";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

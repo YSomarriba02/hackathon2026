@@ -5,7 +5,7 @@
   --foreground: #363e45;
   --primary: #E6775E;
   --primary2: #4C969F;
-  --nav-bg: #ececec;
+  --form: #2a2828;
 }
 
 @theme inline {
@@ -13,15 +13,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-nav: var(--nav-bg);
   --color-primary: var(--primary);
   --color-primary2: var(--primary2);
+  --color-form: var(--form);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #363e45;
     --foreground: #f8f8f8;
+    --form: #2b2a2a;
   }
 }
 
@@ -30,3 +31,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+

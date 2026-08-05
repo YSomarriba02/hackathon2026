@@ -1,14 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
 import "./globals.css";
-import TabBar from "@/components/navigation/TabBar";
-import HeaderNav from "@/components/navigation/HeaderNav";
-import TabManager from "@/components/navigation/TabManager";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Conecta Emprende",
@@ -32,7 +24,7 @@ export default function RootLayout({
       lang="en"
       className={`h-full antialiased`}
     >
-      <body className={`flex flex-col h-screen`}>
+      <body className={`flex flex-col`}>
         {children}
       </body>
     </html>

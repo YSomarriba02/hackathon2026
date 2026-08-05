@@ -16,18 +16,17 @@ export default function TabsLayout({
   profile: React.ReactNode;
 }) {
   return (
-    <>
+    <main>
       <HeaderNav />
-      <main className="h-full flex-1 pb-14 bg-background text-foreground">
+      <div className="h-full flex-1 bg-background text-foreground overflow-y-hidden">
         <TabManager
           home={home}
           create={create}
           search={search}
           profile={profile}
         />
-        {children}
-      </main>
+      </div>
       <TabBar />
-    </>
+    </main>
   );
 }

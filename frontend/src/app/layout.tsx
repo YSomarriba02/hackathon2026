@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 
 export const metadata: Metadata = {
   title: "Conecta Emprende",
@@ -22,10 +24,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased`}
+      className={`antialiased`}
     >
-      <body className={`flex flex-col`}>
-        {children}
+      <body className={`flex flex-col h-[88vh]`}>
+         <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!}>
+      {children}
+    </GoogleOAuthProvider>
+
       </body>
     </html>
   );

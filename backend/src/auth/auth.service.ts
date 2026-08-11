@@ -1,15 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import { RegisterDto } from './dto/create-auth.dto';
-// import { RegisterDto } from './dto/create-auth.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
-  register(registerDto: RegisterDto) {
-    const email = registerDto.email ?? 'noemail';
-    const password = registerDto.password ?? 'nopassword';
-    console.log(`${email} - ${password}`);
+  constructor(private jwtService: JwtService) { }
+
+  async loginWithGoogle(googleUser: any) {
+    // 1. Lógica para buscar o crear el usuario en tu base de datos
+    // const user = await this.usersService.findOrCreate(googleUser);
+
+    // 2. Generar tu propio token de acceso JWT
+    const payload = { email: googleUser.email, sub: 'user_id_aqui' };
+
     return {
-      message: 'testeando',
+      token: this.jwtService.sign(payload),
     };
   }
 }

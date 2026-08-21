@@ -1,30 +1,39 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { GoogleAuthGuard } from "./guards/google-auth-guard"
+import { GoogleAuthGuard } from './guards/google-auth-guard';
 import type { Response } from 'express';
+
+const SEVENDAYS = 1000 * 60 * 60 * 24 * 7;
+const FIFTYMIN = 1000 * 60 * 15;
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   @Get('google')
   @UseGuards(GoogleAuthGuard)
-  async googleAuth(@Req() req) {
-    // Redirige automáticamente a Google
-  }
+  async googleAuth() {}
 
   @Get('google/callback')
-  @UseGuards(AuthGuard('google'))
+  @UseGuards(GoogleAuthGuard)
   async googleAuthRedirect(@Req() req, @Res() res: Response) {
-    // req.user contiene la información devuelta por la estrategia de Google
-    const { token } = await this.authService.loginWithGoogle(req.user);
+    const appurl = process.env.FRONTEND_URL;
+    const { accessToken, refreshToken } =
+      await this.authService.loginWithGoogle(req.user);
 
-    // OPCIÓN A: Guardar token en HTTP-Only Cookie (Más seguro)
-    res.cookie('access_token', token, {
+    res.cookie('access_token', accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
+      maxAge: FIFTYMIN,
     });
-    return res.redirect('http://localhost:3000/');
+    res.cookie('refresh_token', refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: 'auth/refresh',
+      maxAge: SEVENDAYS,
+    });
+    return res.redirect(`${appurl}/`);
   }
 }

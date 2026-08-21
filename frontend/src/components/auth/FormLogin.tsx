@@ -3,6 +3,18 @@ import ButtonAuthGoogle from "./ButtonAuthGoogle";
 import InputFloating from "./InputFloating";
 
 export default function FormLogin() {
+
+  const handleGoogleLogin = () => {
+    // Redirección directa al endpoint de NestJS que inicia el flujo de OAuth
+    window.location.href = 'http://localhost:3000/auth/google';
+  };
+
+
+  const handleGoogleLogin = () => {
+    // Redirección directa al endpoint de NestJS que inicia el flujo de OAuth
+    window.location.href = 'http://localhost:3000/auth/google';
+  };
+
   return (
     <div className="h-[70%] relative bg-red-500">
       <div className="absolute -z-10 -top-70 -right-24 size-66 rounded-full bg-primary" />
